@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+<title>TO-DO-LIST</title>
+</head>
+<body>
+<div class="container">
+    <h1>TO-DO-LIST</h1>
+
+    <!-- Add Task Form -->
+    <form action="/tasks" method="POST" class="add-form">
+        <input type="text" name="title" placeholder="What needs to be done?" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <!-- Filter Buttons -->
+    <div class="filters">
+        <a href="/" class="<%= filter === 'all' ? 'active' : '' %>">All</a>
+        <a href="/active" class="<%= filter === 'active' ? 'active' : '' %>">Active</a>
+        <a href="/completed" class="<%= filter === 'completed' ? 'active' : '' %>">Completed</a>
+    </div>
+
+    <!-- Task List -->
+    <ul>
+        <% tasks.forEach(task => { %>
+            <li class="<%= task.completed ? 'completed' : '' %>">
+                <form action="/tasks/<%= task.id %>/complete" method="POST" style="display:inline;">
+                    <button type="submit">✔</button>
+                </form>
+                <span><%= task.title %></span>
+                <form action="/tasks/<%= task.id %>/delete" method="POST" style="display:inline;">
+                    <button type="submit">🗑</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+</body>
+</html>
+
+

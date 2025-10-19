@@ -1,0 +1,389 @@
+/* Neumorphic Design - Soft UI */
+:root {
+    --bg-primary: #e6e9f0;
+    --bg-secondary: #f0f2f5;
+    --surface: #f5f7fa;
+    --shadow-light: #ffffff;
+    --shadow-dark: #d1d9e6;
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --accent-primary: #4299e1;
+    --accent-success: #48bb78;
+    --accent-danger: #f56565;
+    --radius: 20px;
+    --radius-sm: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Rounded', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+.container {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    text-shadow: 2px 2px 4px var(--shadow-dark), 
+                -2px -2px 4px var(--shadow-light);
+    letter-spacing: -0.5px;
+}
+
+/* Add Task Form */
+.add-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.add-form input {
+    flex: 1;
+    padding: 18px 20px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    transition: var(--transition);
+}
+
+.add-form input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.add-form input:focus {
+    outline: none;
+    box-shadow: 
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+.add-form button {
+    padding: 18px 28px;
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    min-width: 100px;
+}
+
+.add-form button:hover {
+    box-shadow: 
+        2px 2px 5px var(--shadow-dark),
+        -2px -2px 5px var(--shadow-light);
+    transform: translateY(1px);
+}
+
+.add-form button:active {
+    box-shadow: 
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+/* Filter Buttons */
+.filters {
+    display: flex;
+    background: var(--bg-primary);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 2rem;
+    gap: 4px;
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+.filters a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.filters a.active {
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark),
+        -3px -3px 6px var(--shadow-light);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.filters a:hover:not(.active) {
+    color: var(--text-primary);
+    box-shadow: 
+        inset 2px 2px 4px var(--shadow-dark),
+        inset -2px -2px 4px var(--shadow-light);
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1.25rem;
+    margin-bottom: 12px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+li:hover {
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark),
+        -3px -3px 6px var(--shadow-light);
+    transform: translateY(-2px);
+}
+
+li.completed {
+    background: var(--bg-secondary);
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+li.completed span {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+li span {
+    flex: 1;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+button {
+    background: var(--bg-primary);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark),
+        -3px -3px 6px var(--shadow-light);
+    position: relative;
+}
+
+button:hover {
+    box-shadow: 
+        2px 2px 4px var(--shadow-dark),
+        -2px -2px 4px var(--shadow-light);
+    transform: scale(1.05);
+}
+
+button:active {
+    box-shadow: 
+        inset 2px 2px 4px var(--shadow-dark),
+        inset -2px -2px 4px var(--shadow-light);
+}
+
+form[action*="complete"] button {
+    color: var(--accent-success);
+}
+
+form[action*="delete"] button {
+    color: var(--accent-danger);
+}
+
+/* Custom checkbox style */
+form[action*="complete"] button {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+li.completed form[action*="complete"] button {
+    background: var(--accent-success);
+    color: white;
+    box-shadow: 
+        3px 3px 6px rgba(72, 187, 120, 0.3),
+        -3px -3px 6px rgba(72, 187, 120, 0.1);
+}
+
+/* Progress bar (optional decorative element) */
+.progress-container {
+    height: 6px;
+    background: var(--bg-primary);
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    box-shadow: 
+        inset 2px 2px 4px var(--shadow-dark),
+        inset -2px -2px 4px var(--shadow-light);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
+    border-radius: 3px;
+    transition: var(--transition);
+    width: 30%; /* This would be dynamic in a real app */
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state */
+ul:empty::before {
+    content: '✨ No tasks yet. Add your first task above!';
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem 1rem;
+    display: block;
+    font-style: italic;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1.5rem;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    .add-form {
+        flex-direction: column;
+    }
+    
+    .add-form button {
+        width: 100%;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    li {
+        padding: 1rem;
+        gap: 12px;
+    }
+    
+    button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    li span {
+        font-size: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes softAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+li {
+    animation: softAppear 0.4s ease-out;
+}
+
+/* Focus states for accessibility */
+.add-form input:focus,
+button:focus,
+.filters a:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Active state enhancements */
+.filters a:active {
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #2d3748;
+        --bg-secondary: #4a5568;
+        --shadow-light: #4a5568;
+        --shadow-dark: #1a202c;
+        --text-primary: #f7fafc;
+        --text-secondary: #cbd5e0;
+    }
+    
+    .container {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
